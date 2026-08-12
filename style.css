@@ -1,1 +1,539 @@
+/* ============================================
+   RAGOStand - Design System
+   "The Culinary Lab / Quiet Indulgence"
+   ============================================ */
 
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+  /* Colors - Perfect Monochrome */
+  --color-bg: #000000;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-tertiary: rgba(255, 255, 255, 0.4);
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-line-hover: rgba(255, 255, 255, 0.3);
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+
+  /* Spacing (Golden Ratio inspired) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.618rem;
+  --space-lg: 2.618rem;
+  --space-xl: 4.236rem;
+  --space-2xl: 6.854rem;
+  --space-3xl: 11.09rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.5;
+}
+
+p {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: var(--color-text-secondary);
+}
+
+.text-sm {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.text-label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* --- Layout --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+.section--compact {
+  min-height: auto;
+  padding: var(--space-2xl) 0;
+}
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__image-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.hero__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: brightness(0.6) contrast(1.1);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: var(--space-xl);
+}
+
+.hero__tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards 0.3s;
+}
+
+.hero__subtitle {
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  letter-spacing: 0.1em;
+  line-height: 2;
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards 0.6s;
+}
+
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards 1s, float 3s ease-in-out infinite 2s;
+}
+
+.hero__scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-text-secondary), transparent);
+}
+
+/* --- Current Experiment Section --- */
+.experiment {
+  text-align: center;
+}
+
+.experiment__header {
+  margin-bottom: var(--space-2xl);
+}
+
+.experiment__label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.experiment__title {
+  font-style: italic;
+}
+
+.experiment__content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.experiment__dish-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+}
+
+.experiment__abstract {
+  margin-bottom: var(--space-xl);
+  text-align: left;
+}
+
+.experiment__location {
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-line);
+}
+
+.experiment__location-label {
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.experiment__location-text {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-style: italic;
+}
+
+/* --- Archive Section --- */
+.archive {
+  text-align: center;
+}
+
+.archive__header {
+  margin-bottom: var(--space-2xl);
+}
+
+.archive__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: start; /* 展開時に高さが可変になるよう上揃え */
+}
+
+/* ---- アコーディオンカード ---- */
+.archive__item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  /* 写真部分のみ表示する高さ。
+     画像の縦横比は 3:4 (写真:文章 = 上60% : 下40% 程度) を想定し、
+     「写真部分の高さ ≈ カード幅の 120%」を初期値に設定。
+     実際の画像比率に合わせて調整してください。 */
+  max-height: 120%;
+  /* max-height をパーセントではなくpx指定で確実に動かすため
+     JS 側で実際の写真高さを設定する。
+     CSS フォールバックとして大きな値をセット。 */
+  max-height: var(--archive-photo-height, 400px);
+  transition: max-height 0.55s ease-in-out;
+  background: #000;
+}
+
+/* 展開済み状態 */
+.archive__item.is-expanded {
+  /* 画像の実際の自然高さ全体を表示できる大きな値 */
+  max-height: 2000px;
+}
+
+/* ホバー時の微細なスケール(展開済みでないときのみ) */
+.archive__item:not(.is-expanded):hover .archive__item-image {
+  transform: scale(1.03);
+}
+
+.archive__item-image {
+  width: 100%;
+  height: auto;        /* 自然な縦横比で表示 */
+  display: block;
+  transition: transform var(--transition-slow), filter var(--transition-smooth);
+  filter: grayscale(30%);
+}
+
+.archive__item.is-expanded .archive__item-image {
+  filter: grayscale(0%);
+}
+
+/* ---- 展開ヒント(グラデーション+矢印) ---- */
+.archive__item-hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: var(--space-sm);
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+}
+
+/* 展開されたらヒントを隠す */
+.archive__item.is-expanded .archive__item-hint {
+  opacity: 0;
+}
+
+.archive__item-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.archive__item-hint-arrow {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-text-secondary);
+  transform: rotate(45deg);
+  animation: bounce-arrow 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce-arrow {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50%       { transform: rotate(45deg) translateY(4px); }
+}
+
+/* ---- ラベル(Exp.#XXX) ---- */
+.archive__item-label {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 3;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 6px;
+  backdrop-filter: blur(4px);
+}
+
+/* --- Philosophy Section --- */
+.philosophy {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy__content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.philosophy__quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-style: italic;
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+
+.philosophy__quote::before,
+.philosophy__quote::after {
+  content: '"';
+  color: var(--color-text-tertiary);
+}
+
+/* --- Instagram CTA Section --- */
+.cta {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+.cta__header {
+  margin-bottom: var(--space-xl);
+}
+
+.cta__label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.cta__description {
+  max-width: 400px;
+  margin: 0 auto var(--space-lg);
+}
+
+.cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-text-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.cta__button:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.cta__button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Footer --- */
+.footer {
+  padding: var(--space-xl) 0;
+  text-align: center;
+  border-top: 1px solid var(--color-line);
+}
+
+.footer__text {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .archive__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs);
+  }
+
+  .archive__item {
+    max-height: var(--archive-photo-height, 300px);
+  }
+
+  .hero__content {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .archive__grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+
+  .archive__item {
+    max-height: var(--archive-photo-height, 360px);
+  }
+}
