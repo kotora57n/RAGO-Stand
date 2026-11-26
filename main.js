@@ -80,7 +80,7 @@ function createCoverSlide(cover) {
 
   /* ロゴ */
   const logo = el('img', 'cover__logo');
-  logo.src = 'logo.png';
+  logo.src = 'logo.jpg';
   logo.alt = 'RAGO STAND ロゴ';
   slide.appendChild(logo);
 
@@ -178,7 +178,7 @@ function createAboutSlide(about) {
 
   /* 小ロゴ */
   const logo = el('img', 'about__logo');
-  logo.src = 'logo.png';
+  logo.src = 'logo.jpg';
   logo.alt = 'RAGO STAND ロゴ';
   slide.appendChild(logo);
 
