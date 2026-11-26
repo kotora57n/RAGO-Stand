@@ -42,7 +42,7 @@ const SITE_DATA = {
       text: "いつもどこかで少し失敗してしまうけれど、\n本人はいたってまじめ。\nそのひたむきさが、なぜか周りを笑顔にする。",
       from: "#2f6fdb",
       to:   "#0d0d0d",
-      image: "images/2.png"
+      image: "2.png"
     },
     {
       name: "ペリーさん",
@@ -50,7 +50,7 @@ const SITE_DATA = {
       text: "下田にやってきたペリーさんが教えてくれた炭酸水。\nその出会いから生まれる新しい料理とは——\n文明と食の、ふしぎな交差点。",
       from: "#ffffff",
       to:   "#0d0d0d",
-      image: "assets/images/3.png"
+      image: "3.png"
     },
     {
       name: "源頼朝",
@@ -58,7 +58,7 @@ const SITE_DATA = {
       text: "暗い山道でとある村の悩みに出会った源頼朝。\n静かに話を聞き、解決の糸口を探す。\nはたして、その答えとは。",
       from: "#ffffff",
       to:   "#0d0d0d",
-      image: "assets/images/4.png"
+      image: "4.png"
     },
     {
       name: "吉田松陰",
@@ -66,7 +66,7 @@ const SITE_DATA = {
       text: "海でおぼれているところを助けてくれた吉田松陰。\nあることをきっかけに、一緒に行動することになる。\n松陰が来た、本当の目的とは——。",
       from: "#ffffff",
       to:   "#0d0d0d",
-      image: "assets/images/5.png"
+      image: "5.png"
     }
   ],
 
