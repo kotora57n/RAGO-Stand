@@ -16,7 +16,7 @@ const SITE_DATA = {
      * 表紙の背景画像パス（例: "assets/cover.jpg"）
      * 空文字のままにすると白背景になります
      */
-    bgImage: ""
+    bgImage: "rago-stand-logo.png"
   },
 
   /* ── キャラクター（5体）────────────────────────────────
