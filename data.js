@@ -34,7 +34,7 @@ const SITE_DATA = {
       text: "将来自分のお店を開こうと決心した、\nまじめで一途な子。\n毎日こつこつと料理の研究に励んでいます。",
       from: "#f28c28",
       to:   "#0d0d0d",
-      image: "assets/images/1.png"
+      image: "1.png"
     },
     {
       name: "",
