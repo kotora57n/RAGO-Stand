@@ -42,7 +42,7 @@ const SITE_DATA = {
       text: "いつもどこかで少し失敗してしまうけれど、\n本人はいたってまじめ。\nそのひたむきさが、なぜか周りを笑顔にする。",
       from: "#2f6fdb",
       to:   "#0d0d0d",
-      image: "assets/images/2.png"
+      image: "images/2.png"
     },
     {
       name: "ペリーさん",
